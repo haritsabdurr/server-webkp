@@ -1,4 +1,5 @@
 import User from '../model/user.model.js';
+import bcrypt from 'bcrypt';
 
 export const getUsers = async (req, res) => {
   try {
@@ -32,7 +33,13 @@ export const updateUser = async (req, res) => {
   try {
     const updateduser = await User.updateOne(
       { _id: req.params.id },
-      { $set: req.body }
+      {
+        $set: {
+          username: req.body.username,
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, 8),
+        },
+      }
     );
     res.status(200).json(updateduser);
   } catch (error) {
