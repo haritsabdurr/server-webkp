@@ -35,7 +35,9 @@ export const updateUser = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          username: req.body.username,
+          jurusan: req.body.jurusan,
+          nim: req.body.nim,
+          name: req.body.name,
           email: req.body.email,
           password: bcrypt.hashSync(req.body.password, 8),
         },

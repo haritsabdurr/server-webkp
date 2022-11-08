@@ -3,7 +3,15 @@ import mongoose from 'mongoose';
 const User = mongoose.model(
   'User',
   new mongoose.Schema({
-    username: {
+    jurusan: {
+      type: String,
+      required: true,
+    },
+    nim: {
+      type: String,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },

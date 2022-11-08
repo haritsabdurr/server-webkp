@@ -1,9 +1,9 @@
 import User from '../model/user.model.js';
 
-export const checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // Username
+export const checkDuplicateNimOrEmail = (req, res, next) => {
+  // nim
   User.findOne({
-    username: req.body.username,
+    nim: req.body.nim,
   }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -11,7 +11,7 @@ export const checkDuplicateUsernameOrEmail = (req, res, next) => {
     }
 
     if (user) {
-      res.status(400).send({ message: 'Failed! Username is already in use!' });
+      res.status(400).send({ message: 'Failed! NIM is already in use!' });
       return;
     }
 

@@ -5,7 +5,9 @@ import bcrypt from 'bcrypt';
 
 export const signup = (req, res) => {
   const user = new User({
-    username: req.body.username,
+    jurusan: req.body.jurusan,
+    nim: req.body.nim,
+    name: req.body.name,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
   });
@@ -22,7 +24,7 @@ export const signup = (req, res) => {
 
 export const signin = (req, res) => {
   User.findOne({
-    username: req.body.username,
+    username: req.body.nim,
   }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -47,7 +49,7 @@ export const signin = (req, res) => {
     });
     res.status(200).send({
       id: user._id,
-      username: user.username,
+      nim: user.nim,
       email: user.email,
       accessToken: token,
     });
