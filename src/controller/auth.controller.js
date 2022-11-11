@@ -7,7 +7,7 @@ export const signup = (req, res) => {
   const user = new User({
     jurusan: req.body.jurusan,
     nim: req.body.nim,
-    name: req.body.name,
+    nama: req.body.nama,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
   });

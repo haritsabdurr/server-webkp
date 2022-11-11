@@ -11,7 +11,7 @@ const User = mongoose.model(
       type: String,
       required: true,
     },
-    name: {
+    nama: {
       type: String,
       required: true,
     },
