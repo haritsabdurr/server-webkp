@@ -50,6 +50,7 @@ export const signin = (req, res) => {
     res.status(200).send({
       id: user._id,
       nim: user.nim,
+      nama: user.nama,
       email: user.email,
       accessToken: token,
     });
