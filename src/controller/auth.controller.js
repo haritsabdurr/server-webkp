@@ -24,7 +24,7 @@ export const signup = (req, res) => {
 
 export const signin = (req, res) => {
   User.findOne({
-    username: req.body.nim,
+    nim: req.body.nim,
   }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -32,7 +32,7 @@ export const signin = (req, res) => {
     }
 
     if (!user) {
-      return res.status(404).send({ message: 'Invalid Username!' });
+      return res.status(404).send({ message: 'Invalid NIM!' });
     }
 
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
